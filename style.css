@@ -1,0 +1,182 @@
+* {
+	border: 0;
+
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	background-color: #000;
+	color: #FFF;
+	text-align: center;
+
+
+	width: 1330px; /* GET - auto!!! */
+	height: 730px; /* 730 ??? */
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	/*border: 2px solid red;*/
+}
+
+h1 {
+	position: relative;
+	top: 210px;
+	left: -40px;
+}
+
+h2 {
+	position: relative;
+	top: 480px;
+	left: -40px;
+}
+
+
+.btn_back, .btn_forward {
+	color: #FFF;
+	position: relative;
+	font-size: 20px;
+	font-weight: bold;
+	text-underline: none;
+	text-decoration: none;
+}
+
+.btn_back {
+	top: -300px;
+	left: -960px;
+}
+
+.btn_forward {
+	top: -300px;
+	left: -125px;
+}
+
+.arrow {
+	position: relative;
+	top: 10px;
+}
+
+
+.film-title-container {
+	position: relative;
+	top: -950px;
+	left: -510px;
+	width: 120px;
+	height: 6px;
+	border: 1px solid red;
+	background-color: #000;
+}
+
+.film-title {
+	position: relative;
+	top: -958px;
+	left: 20px;
+}
+
+
+
+.players {
+	position: relative !important;
+	top: -535px !important;
+	left: 318px !important;
+}
+
+
+
+.menu-head {
+	border: 2px solid blue;
+
+	width: 190px;
+	text-align: center;
+	right: 0px;
+	position: absolute;
+	background-color: #FFFF00;
+	color: #000;
+	padding: 4px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.menu {
+	text-align: left;
+	font-size: 20px;
+	width: 125px;
+	top: 29px;
+	right: 30px;
+	position: absolute;
+	padding: 4px;
+	border: 2px solid blue;
+	color: #000;
+	background-color: #FFFF00;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.menu .menu-title {
+}
+
+.menu .line {
+	background-color: #FFF;
+}
+
+.menu b {
+	/* background-color: #FFF; */
+}
+
+.menu p:hover {
+	font-weight: bold;
+	color: #FFF;
+	background-color: #FF474D;
+}
+
+
+.films {
+	top: 270px;
+	width: 220px;
+}
+
+.menu hr, .films hr {
+	border: 1px solid #000;
+	width: 90%;
+}
+
+.films .films-list {
+	max-height: 410px;
+	overflow-y: scroll;
+	overflow: auto;
+}
+
+
+.footer {
+	border: 2px solid blue;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	background-color: #FFFF00;
+	color: #000;
+	top: -365px;
+	position: relative;
+	width: 101%; /* ??? */
+	height: 20px;
+	font-weight: bold;
+}
+
+
+
+#FastSearch {
+	position: relative;
+	top: -650px;
+	left: -620px;
+	width: 150px;
+	background-color: #FFFF00;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
+}
+
+.players {
+	position: relative !important;
+	top: -525px !important;
+	left: 318px !important;
+	width: 590px !important;
+}

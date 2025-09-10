@@ -7,10 +7,10 @@
 
   <title>FilmiXxX</title>
 
-  <link rel="stylesheet" href="style.css?r=<?php echo rand(0, 666); ?>">
+  <link rel="stylesheet" href="/style.css?r=<?php echo rand(0, 666); ?>">
   
   <!--link rel="icon" type="image/x-icon" href="favicon.ico" /-->
-  <link rel="icon" href="favicon.png" sizes="16x16" type="image/png" />
+  <link rel="icon" href="/favicon.png" sizes="16x16" type="image/png" />
 
 	<script type="text/javascript">
 		var site_root       = 'https://filmix.my/';
@@ -66,6 +66,9 @@ function d($arr) {
 	echo '</pre>';
 }
 
+//d("TEST!"); die();
+
+
 
 $films = [];
 $filmix_arr = [];
@@ -108,13 +111,23 @@ $filmix_arr['https://filmix.fan/']	 						= array('type' => 'class', 'value' => 
 //d($filmix_arr);
 //echo '<hr />';
 
+///*
+if (isset($_GET['path'])) {
+	$domain = substr($_GET['path'], 0, -1);
+	//d($_GET['path']);
+	d($domain);
+}
+//*/
+
 
 $dom = new DomDocument();
 //$finder = new DomXPath($dom);
-
 echo '<div class="menu-head">';
 echo '<b class="menu-title">... ::: FILMS-TV ::: ...</b><br />';
 echo '</div>';
+
+echo '<img src="/img/home.png" class="home_icon" />';
+echo '<a href="/" class="home">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HOME</a>';
 
 echo '<div class="menu">';
 echo '<b class="menu-title">CHANNELS:</b><hr />';
@@ -125,37 +138,43 @@ echo '<div class="channels-list">';
 foreach ($filmix_arr as $site_url => $options) {
 	//echo ('<p '.($ind % 2 == 0 ? ' class="line" ' : ' class="underline" ').'><b>'.$ind.'</b> <a href="'.$site_url.'" target="_blank">'.$site_url.'</a></p>');
 
-	// ($ind == 0 ? " class='active' " : "")
-	echo '<p><b>'.$ind.'</b> <a style="/*border: 2px solid red; z-index: 100500;*/" href="http://filmix'.str_replace('https://', '/', $site_url).'">'.str_replace('https://', '', substr($site_url, 0, -1)).'</a></p>';
+	$active = ($ind == 1 ? " class='active' " : "");
+	echo '<p '.$active.'><b>'.$ind.'</b> <a style="/*border: 2px solid red; z-index: 100500;*/" href="http://filmix'.str_replace('https://', '/', $site_url).'">'.str_replace('https://', '', substr($site_url, 0, -1)).'</a></p>';
 	$ind++;
 
-/*
-	@$dom->loadHTMLFile($site_url);
-	$i = 1;
 
-	foreach($dom->getElementsByTagName('a') as $element) { 
-		$href = explode('.', $element->getAttribute('href'));
-		if (isset($href[2]) && 
-			$href[2] == 'html' && 
-			trim(preg_replace('/\s\s+/', '', $element->textContent)) != '' && 
-			trim(preg_replace('/\s\s+/', '', $element->textContent)) != '...' && 
-			trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'стать propro+' && 
-			trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Смотреть онлайн' && 
-			trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Реклама' && 
-			trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Abuse' && 
-			trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Помощь' && 
-			trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Соглашение' && 
-			trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Контакты'
-			 ) {
+	//d($site_url);
+	if ($ind == 3) {
+		@$dom->loadHTMLFile($site_url);
+		$i = 1;
+		d($site_url);
 
-			$textContent = trim(preg_replace('/\s\s+/', '', $element->textContent));
-			$films[][$element->getAttribute('href')] = $textContent;
+		foreach($dom->getElementsByTagName('a') as $element) { 
+			$href = explode('.', $element->getAttribute('href'));
+			if (isset($href[2]) && 
+				$href[2] == 'html' && 
+				trim(preg_replace('/\s\s+/', '', $element->textContent)) != '' && 
+				trim(preg_replace('/\s\s+/', '', $element->textContent)) != '...' && 
+				trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'стать propro+' && 
+				trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Смотреть онлайн' && 
+				trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Реклама' && 
+				trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Abuse' && 
+				trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Помощь' && 
+				trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Соглашение' && 
+				trim(preg_replace('/\s\s+/', '', $element->textContent)) != 'Контакты'
+				 ) {
 
-			$i++;
-			$all_films_count++;
+				$textContent = trim(preg_replace('/\s\s+/', '', $element->textContent));
+				$films[][$element->getAttribute('href')] = $textContent;
+
+				$i++;
+				$all_films_count++;
+			}
 		}
+
+		//d($films);
 	}
-*/
+
 	//d($films);
 	//echo '<br /><br />';
 	//d(count($films));
@@ -209,7 +228,7 @@ echo '<p><b>10</b> <a href="#">test film 10</a></p>';
 echo '<p><b>11</b> <a href="#">test film 11</a></p>';
 echo '<p><b>12</b> <a href="#">test film 12</a></p>';
 echo '<p><b>13</b> <a href="#">test film 13</a></p>';
-///*
+
 echo '<p><b>14</b> <a href="#">test film 14</a></p>';
 echo '<p><b>15</b> <a href="#">test film 15</a></p>';
 echo '<p><b>16</b> <a href="#">test film 16</a></p>';
@@ -217,7 +236,6 @@ echo '<p><b>17</b> <a href="#">test film 17</a></p>';
 echo '<p><b>18</b> <a href="#">test film 18</a></p>';
 echo '<p><b>19</b> <a href="#">test film 19</a></p>';
 echo '<p><b>20</b> <a href="#">test film 20</a></p>';
-//*/
 
 echo '</div>';
 echo '</div>';
@@ -231,8 +249,8 @@ echo '</div>';
 
 
   <img src="https://mobile.zame-dev.org/gloomy-ii/themes/default/images/background-video.jpg" />
-  <a href="#" class="btn_back" onclick="alert('back film!'); return false;"><span class="arrow"><</span>___</a>
-  <a href="#" class="btn_forward" onclick="alert('next film!'); return false;">___<span class="arrow">></span></a>
+  <a href="#" class="btn_back" onclick="alert('Back Film!'); return false;"><span class="arrow"><</span>__</a>
+  <a href="#" class="btn_forward" onclick="alert('Next Film!'); return false;">__<span class="arrow">></span></a>
  
 
 
@@ -279,6 +297,6 @@ echo '</div>';
 		</div>
 	</div>
 
-  <div class="footer">Made by Ivan Volkov aka oOLokiOo</div>
+  <div class="footer"><b>Made by Ivan Volkov aka oOLokiOo</b></div>
 </body>
 </html>
